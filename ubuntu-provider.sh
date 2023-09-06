@@ -7,6 +7,7 @@ else
 fi
 echo "服务IP:${hostname}"
 
+stf_image="nobuoka/stf-arm64:latest"
 
 echo "apt update......"
 apt update
@@ -23,8 +24,8 @@ else
 fi
 
 echo "拉取必要的image"
-docker pull openstf/stf:latest
-docker pull sorccu/adb:latest
+docker pull ${stf_image}
+docker pull yaming116/arm32v7-adb:latest
 
 
 
@@ -37,11 +38,11 @@ docker rm -v "provider1" "adbd"
 sleep 1
 
 echo "启动adbd"
-docker run -d --name adbd --privileged -v /dev/bus/usb:/dev/bus/usb --net host sorccu/adb:latest
+docker run -d --name adbd --privileged -v /dev/bus/usb:/dev/bus/usb --net host yaming116/arm32v7-adb:latest
 sleep 3
 
 echo "启动stf provider"
-docker run -d --name provider1 --net host openstf/stf \
+docker run -d --name provider1 --net host ${stf_image} \
 stf provider --name provider1 \
 --connect-sub tcp://${hostname}:7250 \
 --connect-push tcp://${hostname}:7270 \
