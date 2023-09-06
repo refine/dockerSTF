@@ -49,7 +49,7 @@ docker rm -v "stf-reaper" "triproxy-dev" "stf-processer" "triproxy-app" "storage
 sleep 1
 
 echo "下载nginx配置文件..."
-curl -sSL https://raw.githubusercontent.com/sunshine4me/dockerSTF/master/nginx.conf > nginx.conf
+curl -sSL https://raw.githubusercontent.com/refine/dockerSTF/master/nginx.conf > nginx.conf
 
 echo "启动nginx"
 docker run -d  --name nginx -v "${workdir}/nginx.conf:/etc/nginx/nginx.conf:ro" --net host nginx:1.7.10 nginx
