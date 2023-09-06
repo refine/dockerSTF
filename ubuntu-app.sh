@@ -25,6 +25,7 @@ fi
 echo "启动 docker"
 service docker start
 
+# 官方版本 openstf/stf-armv7l，版本为3.3，下面版本为3.6
 stf_image="nobuoka/stf-arm64:latest"
 
 echo "拉取image"
