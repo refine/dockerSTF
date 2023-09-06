@@ -1,4 +1,4 @@
-**请在ubuntu系统下使用**
+**请在ubuntu（aarch64/arm/arm64）系统下使用**
 
 ## 一行命令启动stf主服务
 
